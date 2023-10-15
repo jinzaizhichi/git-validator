@@ -179,6 +179,19 @@ If you don't want to check git commit messages, adding the `--no-commit-msg` opt
 }
 ```
 
+### Skipping linting or formatting on `pre-commit` stage
+
+When you commit you code, it will lint (using `eslint`) code firstly and then format (using `prettier`) code. If you want to skip one of them, you can pass `--no-eslint` or `--no-prettier` option when running `git install`.
+
+```json
+{
+  "scripts": {
+    // it will not lint code and will only format code when committing code
+    "postinstall": "git-validator install --no-eslint"
+  }
+}
+```
+
 ### Working with `husky`
 
 This library can work as a standalone package. However, if you have Husky 5 or a later version installed, you'll need to manually add `.husky/commit-msg` and `.husky/pre-commit`, as Husky will ignore the `.git/hooks/commit-msg` and `.git/hooks/pre-commit`:
